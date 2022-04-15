@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap" rel="stylesheet">
 
+  <!-- STYLES -->
   <link rel="stylesheet" href="./styles/reset.css">
   <link rel="stylesheet" href="./styles/style.css">
 
@@ -19,17 +20,37 @@
 
 <body>
   <header class="main-header">
-    <h1>Library</h1>
-    <ul class="book-options">
-      <button class="add-book-btn">Add Book</button>
-      <button class="clear-book-btn">Add Book</button>
-    </ul>
+    <div class="container">
+      <h1>Library</h1>
+      <ul class="book-options">
+        <button class="add-book-btn">Add Book</button>
+        <button class="clear-book-btn">Clear Books</button>
+      </ul>
+    </div>
   </header>
 
   <main>
     <div class="container">
 
       <div class="book-tile">
+        <h2>Test Name</h2>
+        <p class="author-name">Author Name</p>
+        <p class="read-status">Completed</p>
+        <button class="read-btn">Not read</button>
+        <button class="remove-btn">Remove Book</button>
+      </div>
+
+
+
+
+
+    </div>
+  </main>
+
+  <div class="modal">
+
+
+    <!-- <div class="add-book-popup">
         <header class="tile-header">Book Info</header>
         <form action="#">
           <fieldset>
@@ -46,14 +67,14 @@
           </fieldset>
           <fieldset>
             <label for="read">Read?:</label>
-            <input type="radio" id="read-yes" name="read-yes">
-            <input type="radio" id="read-no" name="read-no">
+            <input type="checkbox" id="read-status" name="read-status" value="true">
           </fieldset>
+          <footer>
+            <button class="form-btn">Submit</button>
+          </footer>
         </form>
-      </div>
-
-    </div>
-  </main>
+      </div> -->
+  </div>
 
   <script src="./scripts/script.js"></script>
 </body>
