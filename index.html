@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <title>Library</title>
+</head>
+
+<body>
+  <header class="main-header">
+    <h1>Library</h1>
+    <ul class="book-options">
+      <button class="add-book-btn">Add Book</button>
+      <button class="clear-book-btn">Add Book</button>
+    </ul>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="book-tile">
+        <header class="tile-header">Book Info</header>
+        <form action="#">
+          <fieldset>
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title">
+          </fieldset>
+          <fieldset>
+            <label for="author">Title</label>
+            <input id="author" type="text" name="author">
+          </fieldset>
+          <fieldset>
+            <label for="pages">Title</label>
+            <input id="pages" type="number" name="pages">
+          </fieldset>
+          <fieldset>
+            <label for="read">Read?:</label>
+            <input type="radio" id="read-yes" name="read-yes">
+            <input type="radio" id="read-no" name="read-no">
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./scripts/script.js"></script>
+</body>
+
+</html>
