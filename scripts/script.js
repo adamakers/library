@@ -55,8 +55,7 @@ function updateLibraryDisplay() {
     <div class="book-tile">
     <h2>${book.title}</h2>
     <p class="author-name">${book.author}</p>
-    <p class="read-status ${book.read ? 'has-read' : ''}">${book.read ? 'Completed' : 'In Progress'}</p>
-    <button class="read-btn">Not read</button>
+    <button class="read-btn ${book.read ? 'has-read' : ''}">>${book.read ? 'Read' : 'Not Read'}</button>
     <button class="remove-btn">Remove</button>
     </div>
     `;
