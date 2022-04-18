@@ -133,14 +133,13 @@ main .container {
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  display: none;
 }
 
 .modal.active {
-  display: block;
+  display: flex;
 }
 
 .add-book-popup {
@@ -154,7 +153,7 @@ main .container {
   animation-duration: 0.2s;
 }
 
-.modal.active .add-book-popup .exit-btn {
+.modal .add-book-popup .exit-btn {
   position: absolute;
   right: 1rem;
   top: 1rem;
