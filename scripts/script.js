@@ -1,3 +1,5 @@
+const mainContainer = document.querySelector('main .container');
+
 const addBookBtn = document.querySelector('.add-book-btn');
 const clearBookBtn = document.querySelector('.clear-book-btn');
 
@@ -48,14 +50,12 @@ function updateLibraryDisplay() {
 
   clearLibraryDisplay();
 
-  const mainContainer = document.querySelector('main .container');
-
-  const strArr = libraryArray.map(book => {
+  const strArr = libraryArray.map((book, idx) => {
     return `
-    <div class="book-tile">
+    <div class="book-tile" data-idx=${idx}>
     <h2>${book.title}</h2>
     <p class="author-name">${book.author}</p>
-    <button class="read-btn ${book.read ? 'has-read' : ''}">>${book.read ? 'Read' : 'Not Read'}</button>
+    <button class="read-btn ${book.read ? 'has-read' : ''}">${book.read ? 'Read' : 'Not Read'}</button>
     <button class="remove-btn">Remove</button>
     </div>
     `;
@@ -64,9 +64,15 @@ function updateLibraryDisplay() {
   mainContainer.insertAdjacentHTML('beforeend', strArr);
 }
 
-function clearLibraryDisplay() {
-  const mainContainer = document.querySelector('main .container');
+//handles the buttons for removing book and updating read status.  Delegation handler
+function bookButtonHandler() {
 
+}
+
+function removeSingleBook() {
+}
+
+function clearLibraryDisplay() {
   mainContainer.textContent = '';
 }
 
@@ -96,7 +102,6 @@ function nukeAllBooks() {
     clearLibraryDisplay();
   }
   return;
-
 }
 
 
@@ -110,7 +115,9 @@ modalExitBtn.addEventListener('click', exitModal);
 
 formSubmitBtn.addEventListener('click', addBookToLibrary);
 
+mainContainer.addEventListener('click', removeSingleBook)
+
 
 // TODO not read button needs to have different status when book is in progress
-// TODO remove book button
+// TODO remove book button on the element
 // TODO 
