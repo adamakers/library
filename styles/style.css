@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -24,6 +28,12 @@ ul {
   margin: 0 auto;
 }
 
+button {
+  border-radius: 4px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
 /* HEADER */
 .main-header {
   background-color: #DBD4D3;
@@ -43,9 +53,6 @@ ul {
 .main-header button {
   padding: 1rem 1.5rem;
   font-size: 1.8rem;
-  border-radius: 4px;
-  border: 1px solid #000;
-  cursor: pointer;
 }
 
 .main-header .add-book-btn {
@@ -65,3 +72,55 @@ ul {
 }
 
 /* MAIN */
+
+main .container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8rem;
+}
+
+/* BOOK TILES */
+.book-tile {
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 3rem;
+  background-color: #5C80BC;
+  color: #EAFDF8;
+  width: 30%;
+  margin-left: 1.67%;
+  margin-right: 1.66%;
+  margin-bottom: 2rem;
+}
+
+.book-tile>* {
+  margin-bottom: 1rem;
+}
+
+.book-tile h2 {
+  font-size: 3.2rem;
+}
+
+.book-tile .author-name {
+  font-size: 2.4rem;
+}
+
+.book-tile .read-status {
+  font-size: 1.8rem;
+}
+
+.book-tile button {
+  font-size: 2rem;
+  display: block;
+  margin: 0 auto 1rem;
+  width: 90%;
+  b
+}
+
+.book-tile .read-btn {
+  background-color: #E83151;
+}
+
+.book-tile .read-btn.has-read {
+  background-color: #40F99B;
+}
