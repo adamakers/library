@@ -124,3 +124,88 @@ main .container {
 .book-tile .read-btn.has-read {
   background-color: #40F99B;
 }
+
+/* MODAL */
+.modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.add-book-popup {
+  border: 2px solid #FE9000;
+  border-radius: 5px;
+  padding: 3rem;
+  background-color: #4D5061;
+  color: #fff;
+  position: relative;
+  animation-name: explodein;
+  animation-duration: 0.2s;
+}
+
+.modal.active .add-book-popup .exit-btn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  height: 30px;
+  width: 30px;
+  background-color: #D81159;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.add-book-popup .tile-header {
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.add-book-popup fieldset {
+  margin-bottom: 2rem;
+}
+
+.add-book-popup label,
+.add-book-popup input {
+  display: block;
+  font-size: 2rem;
+}
+
+.add-book-popup label {
+  margin-bottom: 0.5rem;
+}
+
+.add-book-popup input {
+  padding: 0.5rem 1rem;
+}
+
+.add-book-popup button {
+  font-size: 2.2rem;
+  padding: 1rem 2rem;
+}
+
+
+/* ANIMATIONS */
+@keyframes explodein {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
