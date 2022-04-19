@@ -105,12 +105,15 @@ main .container {
   font-size: 2.4rem;
 }
 
+.book-tile .page-count {
+  font-size: 2.2rem;
+}
+
 .book-tile button {
   font-size: 2rem;
   display: block;
   margin: 0 auto 1rem;
   width: 90%;
-  b
 }
 
 .book-tile .read-btn {
