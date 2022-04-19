@@ -99,6 +99,7 @@ main .container {
 
 .book-tile h2 {
   font-size: 3.2rem;
+  font-style: italic;
 }
 
 .book-tile .author-name {
