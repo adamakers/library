@@ -47,7 +47,6 @@ function addBookToLibrary(e) {
 
 //adds book to elements
 function updateLibraryDisplay() {
-
   clearLibraryDisplay();
 
   const strArr = libraryArray.map((book, idx) => {
@@ -55,6 +54,7 @@ function updateLibraryDisplay() {
     <div class="book-tile" data-idx=${idx}>
       <h2>${book.title}</h2>
       <p class="author-name">${book.author}</p>
+      <p class="page-count">${book.pages}</p>
       <button class="read-btn ${book.read ? 'has-read' : ''}">${book.read ? 'Read' : 'Not Read'}</button>
       <button class="remove-btn">Remove</button>
     </div>
@@ -64,25 +64,32 @@ function updateLibraryDisplay() {
   mainContainer.insertAdjacentHTML('beforeend', strArr);
 }
 
+function clearLibraryDisplay() {
+  mainContainer.textContent = '';
+}
+
+
 function removeSingleBook(e) {
   if (!e.target.classList.contains('remove-btn')) return;
 
   const idx = e.target.parentElement.dataset.idx;
 
   libraryArray.splice(idx, 1);
+
   updateLibraryDisplay();
 }
 
-function clearLibraryDisplay() {
-  mainContainer.textContent = '';
+//toggles the read attribute
+function toggleRead(e) {
+  if (!e.target.classList.contains('read-btn')) return;
+
+  const idx = e.target.parentElement.dataset.idx;
+
+  libraryArray[idx].changeReadStatus();
+
+  updateLibraryDisplay();
 }
 
-function clearForm() {
-  bookTitleInp.value = '';
-  bookAuthorInp.value = '';
-  bookPagesInp.value = '';
-  bookReadStatusInp.checked = false;
-}
 
 //opens modal for adding book
 function openAddBookModal() {
@@ -92,6 +99,13 @@ function openAddBookModal() {
 //exits modal
 function exitModal() {
   modal.classList.remove('active');
+}
+
+function clearForm() {
+  bookTitleInp.value = '';
+  bookAuthorInp.value = '';
+  bookPagesInp.value = '';
+  bookReadStatusInp.checked = false;
 }
 
 //removes all books from library and display
@@ -104,7 +118,6 @@ function nukeAllBooks() {
   }
   return;
 }
-
 
 // For quickly creating new tiles for testing
 function quickCreate() {
@@ -128,5 +141,4 @@ formSubmitBtn.addEventListener('click', addBookToLibrary);
 
 mainContainer.addEventListener('click', removeSingleBook)
 
-
-// TODO not read button needs to have different status when book is in progress
+mainContainer.addEventListener('click', toggleRead)
