@@ -54,7 +54,7 @@ function updateLibraryDisplay() {
     <div class="book-tile" data-idx=${idx}>
       <h2>${book.title}</h2>
       <p class="author-name">${book.author}</p>
-      <p class="page-count">${book.pages}</p>
+      <p class="page-count">${book.pages} pages</p>
       <button class="read-btn ${book.read ? 'has-read' : ''}">${book.read ? 'Read' : 'Not Read'}</button>
       <button class="remove-btn">Remove</button>
     </div>
@@ -96,7 +96,6 @@ function openAddBookModal() {
   modal.classList.add('active');
 }
 
-//exits modal
 function exitModal() {
   modal.classList.remove('active');
 }
