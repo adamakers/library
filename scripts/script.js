@@ -53,10 +53,10 @@ function updateLibraryDisplay() {
   const strArr = libraryArray.map((book, idx) => {
     return `
     <div class="book-tile" data-idx=${idx}>
-    <h2>${book.title}</h2>
-    <p class="author-name">${book.author}</p>
-    <button class="read-btn ${book.read ? 'has-read' : ''}">${book.read ? 'Read' : 'Not Read'}</button>
-    <button class="remove-btn">Remove</button>
+      <h2>${book.title}</h2>
+      <p class="author-name">${book.author}</p>
+      <button class="read-btn ${book.read ? 'has-read' : ''}">${book.read ? 'Read' : 'Not Read'}</button>
+      <button class="remove-btn">Remove</button>
     </div>
     `;
   }).join('');
@@ -64,12 +64,13 @@ function updateLibraryDisplay() {
   mainContainer.insertAdjacentHTML('beforeend', strArr);
 }
 
-//handles the buttons for removing book and updating read status.  Delegation handler
-function bookButtonHandler() {
+function removeSingleBook(e) {
+  if (!e.target.classList.contains('remove-btn')) return;
 
-}
+  const idx = e.target.parentElement.dataset.idx;
 
-function removeSingleBook() {
+  libraryArray.splice(idx, 1);
+  updateLibraryDisplay();
 }
 
 function clearLibraryDisplay() {
@@ -105,6 +106,16 @@ function nukeAllBooks() {
 }
 
 
+// For quickly creating new tiles for testing
+function quickCreate() {
+  for (let i = 0; i < 6; i++) {
+    libraryArray.push(new Book(i, i, i, true));
+  }
+
+  updateLibraryDisplay();
+}
+
+
 
 ////////// EVENT LISTENERS //////////
 addBookBtn.addEventListener('click', openAddBookModal);
@@ -119,5 +130,3 @@ mainContainer.addEventListener('click', removeSingleBook)
 
 
 // TODO not read button needs to have different status when book is in progress
-// TODO remove book button on the element
-// TODO 
