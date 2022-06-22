@@ -90,58 +90,64 @@ class GUI {
   }
 }
 
-// EVENT HANDLERS AND LISTENERS
-// add book event
-document.querySelector('.add-book-btn').addEventListener('click', e => {
-  // pop up modal
-  GUI.showModal();
-});
+class Events {
+  static addBookBtn = document.querySelector('.add-book-btn');
+  static clearBookBtn = document.querySelector('.clear-book-btn');
+  static formSubmitBtn = document.querySelector('.form-btn');
+  static formExitBtn = document.querySelector('.exit-btn');
+  static bookContainerEl = document.querySelector('.book-container');
 
-// submit book
-document.querySelector('.form-btn').addEventListener('click', e => {
-  e.preventDefault();
 
-  //get book data
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  const pages = document.querySelector('#pages').value;
-  const readStatus = document.querySelector('#read-status').checked;
-  console.log(readStatus);
-  // create book objecty
+  static addBookHandler(e) {
+    GUI.showModal();
+  }
 
-  const book = new Book(title, author, pages, readStatus);
-  Library.addBook(book);
-
-  GUI.renderLibrary(Library.books);
-  GUI.hideModal();
-  // add it to Library
-});
-
-//clears all the books
-document.querySelector('.clear-book-btn').addEventListener('click', e => {
-  Library.clearBooks();
-  
-  GUI.renderLibrary(Library.books);
-});
-
-//close modal button
-document.querySelector('.exit-btn').addEventListener('click', e => {
-  GUI.hideModal();
-});
-
-// read book btn
-// remove book btn
-document.querySelector('.book-container').addEventListener('click', e => {
-  if (e.target.classList.contains('read-btn')) {
-    const clickedISBN = e.target.parentElement.dataset.isbn;
-    const bookIdx = Library.books.findIndex( book => book.isbn === clickedISBN);
-
-    Library.books[bookIdx].updateReadStatus();
-    GUI.renderLibrary(Library.books);
-  } else if (e.target.classList.contains('remove-btn')) {
-    const clickedISBN = e.target.parentElement.dataset.isbn;
-    
-    Library.removeBook(clickedISBN);
+  static clearBookHandler(e) {
+    Library.clearBooks();
     GUI.renderLibrary(Library.books);
   }
-});
+
+  static formSubmitHandler(e) {
+    e.preventDefault();
+
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const readStatus = document.querySelector('#read-status').checked;
+  
+    const book = new Book(title, author, pages, readStatus);
+    Library.addBook(book);
+  
+    GUI.renderLibrary(Library.books);
+    GUI.hideModal();
+  }
+
+  static formExitHandler(e) {
+    GUI.hideModal();
+  }
+
+  static tileButtonsHandler(e) {
+    if (e.target.classList.contains('read-btn')) {
+      const clickedISBN = e.target.parentElement.dataset.isbn;
+      const bookIdx = Library.books.findIndex( book => book.isbn === clickedISBN);
+  
+      Library.books[bookIdx].updateReadStatus();
+      GUI.renderLibrary(Library.books);
+    } else if (e.target.classList.contains('remove-btn')) {
+      const clickedISBN = e.target.parentElement.dataset.isbn;
+  
+      Library.removeBook(clickedISBN);
+      GUI.renderLibrary(Library.books);
+    }
+  }
+
+  static enableAllHandlers() {
+    this.addBookBtn.addEventListener('click', this.addBookHandler);
+    this.clearBookBtn.addEventListener('click', this.clearBookHandler);
+    this.formSubmitBtn.addEventListener('click', this.formSubmitHandler);
+    this.formExitBtn.addEventListener('click', this.formExitHandler);
+    this.bookContainerEl.addEventListener('click', this.tileButtonsHandler);
+  }
+}
+
+Events.enableAllHandlers();
